@@ -1,0 +1,175 @@
+/* Vars */
+:root {
+    --color-day-sky-top: #20c1ec;
+    --color-day-sky-middle: #9bdade;
+    --color-day-sky-bottom: #f2edbb;
+    --color-day-outline: #05252e;
+    --color-day-text-light: #fff;
+    --color-day-text-dark: #333;
+
+    --color-night-sky-top: #093e4c;
+    --color-night-sky-middle: #537882;
+    --color-night-sky-bottom: #9db2b7;
+    --color-night-outline: #05252e;
+    --color-night-text-light: #fff;
+    --color-night-text-dark: #333;
+}
+
+/* Fonts */
+@font-face {
+    font-family: Staatliches;
+    src: url(../fonts/staatliches.woff);
+}
+
+@font-face {
+    font-family: Mountain;
+    src: url(../fonts/mountain.woff);
+}
+
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow:auto;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+}
+
+p {
+    margin-top: 1em;
+}
+
+/* Generic */
+.container {
+    max-width: 1440px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.content-text {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* Header */
+body[data-daytime=day] header {
+    background: linear-gradient(180deg, var(--color-day-sky-top) 0%, var(--color-day-sky-middle) 100%);
+}
+
+body[data-daytime=night] header {
+    background: linear-gradient(180deg, var(--color-night-sky-top) 0%, var(--color-night-sky-middle) 100%);
+}
+
+header .container {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header .team .name {
+    font-family: Staatliches, sans-serif;
+    font-weight: normal;
+    font-size: 50pt;
+    letter-spacing: .1em;
+}
+
+header .team .slogan {
+    font-family: Mountain, sans-serif;
+    font-weight: normal;
+    font-size: 25pt;
+}
+
+header .climber {
+    width: 50%;
+}
+
+header .climber::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url(../images/climber.svg) 0 0 no-repeat;
+    width: 50%;
+    height: 100%;
+}
+
+/* About */
+body[data-daytime=day] section#about {
+    background: linear-gradient(180deg, var(--color-day-sky-middle) 0%, var(--color-day-sky-bottom) 100%);
+    color: var(--color-day-text-dark);
+}
+
+body[data-daytime=night] section#about {
+    background: linear-gradient(180deg, var(--color-night-sky-middle) 0%, var(--color-night-sky-bottom) 100%);
+    color: var(--color-night-text-light);
+}
+
+/* Join us */
+body[data-daytime=day] section#join-us {
+    background: var(--color-day-sky-bottom);
+    color: var(--color-day-text-light);
+}
+
+body[data-daytime=night] section#join-us {
+    background: var(--color-night-sky-bottom);
+    color: var(--color-night-text-light);
+}
+
+/* Footer */
+footer {
+    padding: 3em;
+    text-align: center;
+}
+
+body[data-daytime=day] footer {
+    background: var(--color-day-outline);
+    color: var(--color-day-text-light);
+}
+
+body[data-daytime=night] footer {
+    background: var(--color-night-outline);
+    color: var(--color-night-text-light);
+}
+
+/* Daytime switcher */
+#daytime-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    background: #ccc;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    cursor: pointer;
+}
