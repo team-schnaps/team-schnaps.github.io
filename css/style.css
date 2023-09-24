@@ -189,7 +189,7 @@ header .cloud-right {
 
 /* About */
 section#about {
-    padding: 400px 0 300px 0;
+    padding: 300px 0 300px 0;
 }
 
 body[data-daytime=day] section#about {
@@ -200,6 +200,25 @@ body[data-daytime=day] section#about {
 body[data-daytime=night] section#about {
     background: linear-gradient(180deg, var(--color-night-sky-middle) 0%, var(--color-night-sky-bottom) 100%);
     color: var(--color-night-text-light);
+}
+
+section#about .birds {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    max-height: 120px;
+    margin-top: 70px;
+    background-position-x: calc(50% + 450px);
+    background-position-y: 0;
+    background-repeat: no-repeat;
+}
+
+body[data-daytime=day] section#about .birds {
+    background-image: url(../images/birds-day.svg);
+}
+
+body[data-daytime=night] section#about .birds {
+    background-image: url(../images/birds-night.svg);
 }
 
 /* Join us */
