@@ -1,5 +1,7 @@
 /* Vars */
 :root {
+    --scroll: 0; /* overridden by js */
+
     --color-day-sky-top: #20c1ec;
     --color-day-sky-middle: #9bdade;
     --color-day-sky-bottom: #f2edbb;
@@ -174,7 +176,7 @@ header .cloud-left {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-left.svg) calc(50% - 600px) 0 no-repeat;
+    background: url(../images/cloud-left.svg) calc(50% - 600px - var(--scroll) * 300px) 0 no-repeat;
 }
 
 header .cloud-middle {
@@ -182,7 +184,7 @@ header .cloud-middle {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-middle.svg) calc(50%) 60px no-repeat;
+    background: url(../images/cloud-middle.svg) calc(50% - var(--scroll) * 200px) 60px no-repeat;
 }
 
 header .cloud-right {
@@ -190,7 +192,7 @@ header .cloud-right {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-right.svg) calc(50% + 650px) 30px no-repeat;
+    background: url(../images/cloud-right.svg) calc(50% + 650px + var(--scroll) * 200px) 30px no-repeat;
 }
 
 /* About */

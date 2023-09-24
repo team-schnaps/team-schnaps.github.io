@@ -1,11 +1,28 @@
 document.addEventListener("DOMContentLoaded", function(){
+    new ScrollPropertyManager();
     new DaytimeManager(document.getElementById('daytime-switcher'));
 });
 
-class DaytimeManager {
-    /** @type {HTMLBodyElement} */
-    #body = document.getElementsByTagName('body')[0];
+class ScrollPropertyManager {
+    constructor() {
+        this.#updateProperty();
+        window.addEventListener('scroll', () => this.#updateProperty());
+        window.addEventListener('resize', () => this.#updateProperty());
+    }
 
+    #updateProperty() {
+        document.documentElement.style.setProperty('--scroll', this.#getScrollValue().toString());
+    }
+
+    /**
+     * @return {number} Value from 0 to 1 which indicates % of scroll
+     */
+    #getScrollValue() {
+        return window.scrollY / (document.body.offsetHeight - window.innerHeight);
+    }
+}
+
+class DaytimeManager {
     /**
      * @param {HTMLElement} toggleElement
      */
@@ -39,13 +56,13 @@ class DaytimeManager {
      * @return {string}
      */
     #getDaytime() {
-        return this.#body.dataset.daytime;
+        return document.body.dataset.daytime;
     }
 
     /**
      * @param {string} value
      */
     #setDaytime(value) {
-        this.#body.dataset.daytime = value;
+        document.body.dataset.daytime = value;
     }
 }
