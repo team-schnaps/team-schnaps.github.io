@@ -145,7 +145,32 @@ header .spacer {
     width: 40%;
 }
 
+header .cloud-left {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: url(../images/cloud-left.svg) calc(50% - 600px) 0 no-repeat;
+}
+
+header .cloud-middle {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: url(../images/cloud-middle.svg) calc(50%) 60px no-repeat;
+}
+
+header .cloud-right {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: url(../images/cloud-right.svg) calc(50% + 650px) 30px no-repeat;
+}
+
 /* About */
+section#about {
+    padding: 400px 0 300px 0;
+}
+
 body[data-daytime=day] section#about {
     background: linear-gradient(180deg, var(--color-day-sky-middle) 0%, var(--color-day-sky-bottom) 100%);
     color: var(--color-day-text-dark);
