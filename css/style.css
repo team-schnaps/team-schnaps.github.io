@@ -17,13 +17,27 @@
 
 /* Fonts */
 @font-face {
-    font-family: Staatliches;
-    src: url(../fonts/staatliches.woff);
+    src: url(../fonts/Montserrat-Bold.woff);
+    font-family: Montserrat;
+    font-weight: bold;
 }
 
 @font-face {
+    src: url(../fonts/Montserrat-Regular.woff);
+    font-family: Montserrat;
+    font-weight: normal;
+}
+
+@font-face {
+    src: url(../fonts/Staatliches-Regular.woff);
+    font-family: Staatliches;
+    font-weight: normal;
+}
+
+@font-face {
+    src: url(../fonts/Mountain-Regular.woff);
     font-family: Mountain;
-    src: url(../fonts/mountain.woff);
+    font-weight: normal;
 }
 
 /* Reset */
@@ -66,6 +80,10 @@ p {
 }
 
 /* Generic */
+html {
+    font-family: Montserrat, sans-serif;
+}
+
 .container {
     max-width: 1440px;
     padding: 0 20px;
@@ -75,6 +93,9 @@ p {
 }
 
 h2 {
+    font-family: Mountain, sans-serif;
+    font-weight: normal;
+    font-size: 80px;
     text-align: center;
 }
 
