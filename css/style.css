@@ -13,6 +13,8 @@
     --color-night-outline: #05252e;
     --color-night-text-light: #fff;
     --color-night-text-dark: #333;
+
+    --color-mountain-front: #b05751;
 }
 
 /* Fonts */
@@ -112,6 +114,7 @@ header::before {
     right: 0;
     width: 100%;
     height: 150%;
+    max-height: 1500px;
     background-position-x: 43%;
     background-position-y: 0;
     background-repeat: no-repeat;
@@ -170,6 +173,7 @@ header .cloud-left {
     position: absolute;
     width: 100%;
     height: 50%;
+    max-height: 300px;
     background: url(../images/cloud-left.svg) calc(50% - 600px) 0 no-repeat;
 }
 
@@ -177,6 +181,7 @@ header .cloud-middle {
     position: absolute;
     width: 100%;
     height: 50%;
+    max-height: 300px;
     background: url(../images/cloud-middle.svg) calc(50%) 60px no-repeat;
 }
 
@@ -184,12 +189,13 @@ header .cloud-right {
     position: absolute;
     width: 100%;
     height: 50%;
+    max-height: 300px;
     background: url(../images/cloud-right.svg) calc(50% + 650px) 30px no-repeat;
 }
 
 /* About */
 section#about {
-    padding: 300px 0 300px 0;
+    padding: 300px 0 200px 0;
 }
 
 body[data-daytime=day] section#about {
@@ -222,14 +228,25 @@ body[data-daytime=night] section#about .birds {
 }
 
 /* Join us */
-body[data-daytime=day] section#join-us {
-    background: var(--color-day-sky-bottom);
-    color: var(--color-day-text-light);
+section#join-us {
+    padding: 229px 0 300px 0;
+    color: var(--color-night-text-light);
+    background: var(--color-mountain-front);
 }
 
-body[data-daytime=night] section#join-us {
-    background: var(--color-night-sky-bottom);
-    color: var(--color-night-text-light);
+section#join-us .mountains-peaks {
+    position: absolute;
+    width: 100%;
+    height: 229px;
+    margin-top: -229px;
+}
+
+body[data-daytime=day] section#join-us .mountains-peaks {
+    background: var(--color-day-sky-bottom) url(../images/mountains-peaks.svg) 50% 0 no-repeat;
+}
+
+body[data-daytime=night] section#join-us .mountains-peaks {
+    background: var(--color-night-sky-bottom) url(../images/mountains-peaks.svg) 50% 0 no-repeat;
 }
 
 /* Footer */
