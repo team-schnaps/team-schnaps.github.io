@@ -229,7 +229,7 @@ body[data-daytime=night] section#about .birds {
 
 /* Join us */
 section#join-us {
-    padding: 229px 0 300px 0;
+    padding: 229px 0 250px 0;
     color: var(--color-night-text-light);
     background: var(--color-mountain-front);
 }
@@ -251,19 +251,26 @@ body[data-daytime=night] section#join-us .mountains-peaks {
 
 /* Footer */
 footer {
-    position: relative;
     padding: 3em 0;
     text-align: center;
-}
-
-body[data-daytime=day] footer {
     background: var(--color-day-outline);
     color: var(--color-day-text-light);
 }
 
-body[data-daytime=night] footer {
-    background: var(--color-night-outline);
-    color: var(--color-night-text-light);
+footer .trees-left {
+    position: absolute;
+    width: 100%;
+    height: 357px;
+    margin-top: -357px;
+    background: url(../images/trees-left.svg) calc(50% - 500px) 0 no-repeat;
+}
+
+footer .trees-right {
+    position: absolute;
+    width: 100%;
+    height: 331px;
+    margin-top: -331px;
+    background: url(../images/trees-right.svg) calc(50% + 600px) 0 no-repeat;
 }
 
 /* Daytime switcher */
