@@ -10,8 +10,8 @@
     --color-day-text-dark: #333;
 
     --color-night-sky-top: #093e4c;
-    --color-night-sky-middle: #537882;
-    --color-night-sky-bottom: #9db2b7;
+    --color-night-sky-middle: #275662;
+    --color-night-sky-bottom: #71848a;
     --color-night-outline: #05252e;
     --color-night-text-light: #fff;
     --color-night-text-dark: #333;
@@ -131,7 +131,11 @@ body[data-daytime=day] header::before {
 }
 
 body[data-daytime=night] header {
-    background: linear-gradient(180deg, var(--color-night-sky-top) 0%, var(--color-night-sky-middle) 100%);
+    background: linear-gradient(180deg, var(--color-night-sky-top) 20%, var(--color-night-sky-middle) 100%);
+}
+
+body[data-daytime=night] header::before {
+    background-image: url(../images/climber-night.svg);
 }
 
 header .container {
