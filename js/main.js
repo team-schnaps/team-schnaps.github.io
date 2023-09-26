@@ -11,7 +11,7 @@ class ScrollPropertyManager {
     }
 
     #updateProperty() {
-        document.documentElement.style.setProperty('--scroll', this.#getScrollValue().toString());
+        document.body.style.setProperty('--scroll', this.#getScrollValue().toString());
     }
 
     /**
