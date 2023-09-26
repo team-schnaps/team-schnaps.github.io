@@ -118,7 +118,7 @@ header::before {
     right: 0;
     width: 100%;
     height: 150%;
-    max-height: 1500px;
+    max-height: min(1500px, 100vh);
     background-position-x: 43%;
     background-position-y: 0;
     background-repeat: no-repeat;
