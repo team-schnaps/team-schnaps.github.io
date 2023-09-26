@@ -101,7 +101,7 @@ html {
 h2 {
     font-family: Mountain, sans-serif;
     font-weight: normal;
-    font-size: 80px;
+    font-size: min(80px, max(26px, calc((100vw / 1400) * 80)));
     text-align: center;
 }
 
@@ -182,7 +182,7 @@ header .cloud-left {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-left.svg) calc(50% - min(83vw / 2, 600px) - var(--scroll) * 300px) 0 no-repeat;
+    background: url(../images/cloud-left.svg) calc(50% - min(41vw, 600px) - var(--scroll) * 300px) 0 no-repeat;
 }
 
 header .cloud-middle {
@@ -198,7 +198,7 @@ header .cloud-right {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-right.svg) calc(50% + min(83vw / 2, 650px) + var(--scroll) * 200px) 30px no-repeat;
+    background: url(../images/cloud-right.svg) calc(50% + min(41vw, 650px) + var(--scroll) * 200px) 30px no-repeat;
 }
 
 @media screen and (max-width: 1500px) {
@@ -219,15 +219,15 @@ header .cloud-right {
     }
 
     header .cloud-left {
-        background-size: 33% auto;
+        background-size: 33%;
     }
 
     header .cloud-middle {
-        background-size: 48% auto;
+        background-size: 48%;
     }
 
     header .cloud-right {
-        background-size: 38% auto;
+        background-size: 38%;
     }
 }
 
@@ -255,7 +255,7 @@ header .cloud-right {
 
 /* About */
 section#about {
-    padding: 300px 0 200px 0;
+    padding: min(300px, 22%) 0 min(200px, 20%) 0;
 }
 
 body[data-daytime=day] section#about {
@@ -274,9 +274,10 @@ section#about .birds {
     height: 50%;
     max-height: 120px;
     margin-top: 70px;
-    background-position-x: calc(50% + 450px);
+    background-position-x: calc(50% + min(20vw, 450px));
     background-position-y: 0;
     background-repeat: no-repeat;
+    background-size: min(314px, 50%);
 }
 
 body[data-daytime=day] section#about .birds {
@@ -285,6 +286,12 @@ body[data-daytime=day] section#about .birds {
 
 body[data-daytime=night] section#about .birds {
     background-image: url(../images/birds-night.svg);
+}
+
+@media screen and (max-width: 767px) {
+    section#about {
+        padding: 40% 0 30% 0;
+    }
 }
 
 /* Join us */
