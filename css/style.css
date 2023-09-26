@@ -159,7 +159,7 @@ header .team .name {
     font-family: Staatliches, sans-serif;
     font-weight: normal;
     margin: 0;
-    font-size: 105px;
+    font-size: min(105px, calc(100vw / 13));
     letter-spacing: .08em;
     line-height: 1em;
     overflow: hidden;
@@ -168,13 +168,13 @@ header .team .name {
 header .team .slogan {
     font-family: Mountain, sans-serif;
     font-weight: normal;
-    font-size: 50px;
+    font-size: min(50px, calc(100vw / 28));
     margin-left: .15em;
 }
 
 header .spacer {
     width: 40%;
-    height: 700px;
+    height: min(700px, calc(100vw / 2.3));
 }
 
 header .cloud-left {
@@ -201,21 +201,15 @@ header .cloud-right {
     background: url(../images/cloud-right.svg) calc(50% + min(41vw, 650px) + var(--scroll) * 200px) 30px no-repeat;
 }
 
+@media screen and (min-width: 2500px) {
+    header::before {
+        background-position-x: calc(43% + 5vw);
+    }
+}
+
 @media screen and (max-width: 1500px) {
     header::before {
         background-size: 370%;
-    }
-
-    header .team .name {
-        font-size: calc(100vw / 13);
-    }
-
-    header .team .slogan {
-        font-size: calc(100vw / 28);
-    }
-
-    header .spacer {
-        height: calc(100vw / 2.3);
     }
 
     header .cloud-left {
