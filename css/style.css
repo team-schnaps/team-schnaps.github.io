@@ -141,7 +141,6 @@ body[data-daytime=night] header::before {
 }
 
 header .container {
-    height: 700px;
     display: flex;
     flex-wrap: wrap-reverse;
     justify-content: center;
@@ -175,6 +174,7 @@ header .team .slogan {
 
 header .spacer {
     width: 40%;
+    height: 700px;
 }
 
 header .cloud-left {
@@ -182,7 +182,7 @@ header .cloud-left {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-left.svg) calc(50% - 600px - var(--scroll) * 300px) 0 no-repeat;
+    background: url(../images/cloud-left.svg) calc(50% - min(83vw / 2, 600px) - var(--scroll) * 300px) 0 no-repeat;
 }
 
 header .cloud-middle {
@@ -198,7 +198,59 @@ header .cloud-right {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-right.svg) calc(50% + 650px + var(--scroll) * 200px) 30px no-repeat;
+    background: url(../images/cloud-right.svg) calc(50% + min(83vw / 2, 650px) + var(--scroll) * 200px) 30px no-repeat;
+}
+
+@media screen and (max-width: 1500px) {
+    header::before {
+        background-size: 370%;
+    }
+
+    header .team .name {
+        font-size: calc(100vw / 13);
+    }
+
+    header .team .slogan {
+        font-size: calc(100vw / 28);
+    }
+
+    header .spacer {
+        height: calc(100vw / 2.3);
+    }
+
+    header .cloud-left {
+        background-size: 33% auto;
+    }
+
+    header .cloud-middle {
+        background-size: 48% auto;
+    }
+
+    header .cloud-right {
+        background-size: 38% auto;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    header::before {
+        background-position-x: 53%;
+    }
+
+    header .team .name {
+        font-size: calc(100vw / 8);
+    }
+
+    header .team .slogan {
+        font-size: calc(100vw / 23);
+    }
+
+    header .spacer {
+        height: calc(100vw / 1.8);
+    }
+
+    header .cloud-left, header .cloud-middle, header .cloud-right {
+        margin-top: 15%;
+    }
 }
 
 /* About */
