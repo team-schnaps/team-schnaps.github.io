@@ -182,7 +182,7 @@ header .cloud-left {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-left.svg) calc(50% - min(41vw, 600px) - var(--scroll) * 300px) 0 no-repeat;
+    background: url(../images/cloud-left.svg) calc(50% - min(41vw, 600px) - var(--scroll) * min(300px, calc(100vw / 5))) 0 no-repeat;
 }
 
 header .cloud-middle {
@@ -190,7 +190,7 @@ header .cloud-middle {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-middle.svg) calc(50% - var(--scroll) * 200px) 60px no-repeat;
+    background: url(../images/cloud-middle.svg) calc(50% - var(--scroll) * min(200px, calc(100vw / 6))) 60px no-repeat;
 }
 
 header .cloud-right {
@@ -198,7 +198,7 @@ header .cloud-right {
     width: 100%;
     height: 50%;
     max-height: 300px;
-    background: url(../images/cloud-right.svg) calc(50% + min(41vw, 650px) + var(--scroll) * 200px) 30px no-repeat;
+    background: url(../images/cloud-right.svg) calc(50% + min(41vw, 650px) + var(--scroll) * min(200px, calc(100vw / 6))) 30px no-repeat;
 }
 
 @media screen and (min-width: 2500px) {
@@ -243,7 +243,7 @@ header .cloud-right {
     }
 
     header .cloud-left, header .cloud-middle, header .cloud-right {
-        margin-top: 15%;
+        margin-top: 10%;
     }
 }
 
