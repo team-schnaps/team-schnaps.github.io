@@ -100,60 +100,87 @@ class TextRotator {
 class TextRandomChanger {
     /**
      * @param {HTMLElement} element
-     * @param {string} text
+     * @param {string} newText
      * @param {int} durationMs
      * @param {int} changeDelayMs
      * @return {Promise<void>}
      */
-    static async change(element, text, durationMs, changeDelayMs = 100) {
-        const elementTextArray = element.innerText.split('');
-        const newTextArray = text.split('');
-
-        if (element.innerText.trim().length === 0) {
-            elementTextArray.push(...newTextArray);
-            this.#shuffleArray(elementTextArray);
-        }
-
-        const diff = elementTextArray.length - newTextArray.length;
-        const diffCount = Math.abs(diff);
-        if (diff < 0) {
-            elementTextArray.push(...Array(diffCount));
-        } else {
-            newTextArray.push(...Array(diffCount));
-        }
-
-        const indexesToChange = [...Array(elementTextArray.length).keys()];
-        this.#shuffleArray(indexesToChange);
+    static async change(element, newText, durationMs, changeDelayMs = 100) {
+        const currentText = this.#getCurrentText(element, newText);
+        const maxLength = currentText.length > newText.length ? currentText.length : newText.length;
+        const currentChars = this.#getCharArray(currentText, maxLength);
+        const newChars = this.#getCharArray(newText, maxLength);
+        const changeOrder = this.#getChangeOrderArray(currentChars);
 
         const iterationCount = Math.trunc(durationMs / changeDelayMs);
-        let changeRatio = elementTextArray.length / iterationCount;
-        let charsToChange = 0;
+        let changeStep = currentChars.length / iterationCount;
+        let changeCount = 0;
 
         for (let i = 0; i < iterationCount; i++) {
-            charsToChange += changeRatio;
+            changeCount += changeStep;
 
-            if (charsToChange >= 1) {
-                let charsToChangeCount = Math.trunc(charsToChange);
-                charsToChange -= charsToChangeCount;
-
-                for (let i = 0; i < charsToChangeCount; i++) {
-                    const index = indexesToChange.pop();
-                    elementTextArray[index] = newTextArray[index];
-                }
-
-                element.innerHTML = elementTextArray.join('');
+            if (changeCount >= 1) {
+                let charsToChangeCount = Math.trunc(changeCount);
+                changeCount -= charsToChangeCount;
+                this.#updateElementText(element, currentChars, newChars, changeOrder, charsToChangeCount);
                 await new Promise(resolve => setTimeout(resolve, changeDelayMs));
             }
         }
 
-        if (charsToChange > 0) {
-            let charsToChangeCount = Math.ceil(charsToChange);
-            for (let i = 0; i < charsToChangeCount; i++) {
-                const index = indexesToChange.pop();
-                elementTextArray[index] = newTextArray[index];
-            }
-            element.innerHTML = elementTextArray.join('');
+        if (changeCount > 0) {
+            let charsToChangeCount = Math.ceil(changeCount);
+            this.#updateElementText(element, currentChars, newChars, changeOrder, charsToChangeCount);
         }
+    }
+
+    /**
+     * @param {HTMLElement} element
+     * @param {string} newText
+     * @return {string}
+     */
+    static #getCurrentText(element, newText) {
+        if (element.innerText.trim().length === 0) {
+            const newTextArray = this.#getCharArray(newText, newText.length);
+            this.#shuffleArray(newTextArray);
+            return newTextArray.join('');
+        }
+
+        return element.innerText;
+    }
+
+    /**
+     * @param {string} text
+     * @param {int} maxLength
+     * @return {[string]}
+     */
+    static #getCharArray(text, maxLength) {
+        const missingCount =  maxLength - text.length;
+        return missingCount > 0 ? [...text.split(''), ...Array(missingCount)] : text.split('');
+    }
+
+    /**
+     * @param {[string]} currentChars
+     * @return {[int]}
+     */
+    static #getChangeOrderArray(currentChars) {
+        const changeOrder = [...Array(currentChars.length).keys()];
+        this.#shuffleArray(changeOrder);
+        return changeOrder;
+    }
+
+    /**
+     * @param {HTMLElement} element
+     * @param {[string]} currentChars
+     * @param {[string]} newChars
+     * @param {[int]} changeOrder
+     * @param {int} charsToChangeCount
+     */
+    static #updateElementText(element, currentChars, newChars, changeOrder, charsToChangeCount) {
+        for (let i = 0; i < charsToChangeCount; i++) {
+            const index = changeOrder.pop();
+            currentChars[index] = newChars[index];
+        }
+        element.innerHTML = currentChars.join('');
     }
 
     /**
