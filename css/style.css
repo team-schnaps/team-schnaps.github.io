@@ -101,7 +101,7 @@ html {
 h2 {
     font-family: Mountain, sans-serif;
     font-weight: normal;
-    font-size: min(80px, max(26px, calc((100vw / 1400) * 80)));
+    font-size: min(80px, max(28px, calc((100vw / 1400) * 80)));
     text-align: center;
 }
 
