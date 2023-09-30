@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     new ScrollPropertyManager();
+    new TextRotator(document.querySelector('span.slogan'), 4000);
     new DaytimeManager(document.getElementById('daytime-switcher'));
 });
 
@@ -64,5 +65,64 @@ class DaytimeManager {
      */
     #setDaytime(value) {
         document.body.dataset.daytime = value;
+    }
+}
+
+class TextRotator {
+    /**
+     * @param {HTMLElement} element
+     * @param {int} intervalMs
+     */
+    constructor(element, intervalMs) {
+        const texts = [element.innerText, ...JSON.parse(element.dataset.rotateTexts)];
+        this.#rotate(element, texts, intervalMs);
+    }
+
+    /**
+     * @param {HTMLElement} element
+     * @param {[string]} texts
+     * @param {int} intervalMs
+     * @return {Promise<void>}
+     */
+    async #rotate(element, texts, intervalMs) {
+        element.innerHTML = '';
+
+        while (true) {
+            for (let i = 0; i < texts.length; i++) {
+                const text = texts[i];
+                await Typewriter.clear(element, 30);
+                await Typewriter.write(element, text, 100);
+                await new Promise(resolve => setTimeout(resolve, intervalMs));
+            }
+        }
+    }
+}
+
+class Typewriter {
+    /**
+     * @param {HTMLElement} element
+     * @param {string} text
+     * @param {int} typeDelayMs
+     * @return {Promise<void>}
+     */
+    static async write(element, text, typeDelayMs) {
+        element.innerHTML = '';
+
+        for (let i = 0; i < text.length; i++) {
+            element.innerHTML += text.charAt(i);
+            await new Promise(resolve => setTimeout(resolve, typeDelayMs));
+        }
+    }
+
+    /**
+     * @param {HTMLElement} element
+     * @param {int} typeDelayMs
+     * @return {Promise<void>}
+     */
+    static async clear(element, typeDelayMs) {
+        while (element.innerText.length > 0) {
+            element.innerHTML = element.innerText.slice(0, element.innerText.length-1);
+            await new Promise(resolve => setTimeout(resolve, typeDelayMs));
+        }
     }
 }
