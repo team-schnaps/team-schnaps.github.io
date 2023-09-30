@@ -293,7 +293,7 @@ body[data-daytime=night] section#about .birds {
 section#join-us {
     padding: min(229px, 18vw) 0 min(250px, 16vw) 0;
     color: var(--color-night-text-light);
-    background: var(--color-mountain-front);
+    background: linear-gradient(180deg, var(--color-day-sky-bottom) 0%, var(--color-mountain-front) 10%);
 }
 
 section#join-us .mountains-peaks {
