@@ -339,6 +339,14 @@ footer .trees-right {
     background: url(../images/trees-right.svg) calc(50% + 600px) 0 no-repeat;
 }
 
+footer .icon-copyright {
+    display: inline-block;
+    width: 21px;
+    height: 24px;
+    background: url(../images/icon-cocktail.svg) 0 0 no-repeat;
+    margin: 0 0.35em -0.3em 0.25em;
+}
+
 @media screen and (max-width: 425px) {
     footer {
         padding-top: 1.5em;
