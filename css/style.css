@@ -101,7 +101,7 @@ html {
 h2 {
     font-family: Mountain, sans-serif;
     font-weight: normal;
-    font-size: min(80px, max(26px, calc((100vw / 1400) * 80)));
+    font-size: min(80px, max(28px, calc((100vw / 1400) * 80)));
     text-align: center;
 }
 
@@ -117,8 +117,8 @@ header::before {
     top: 0;
     right: 0;
     width: 100%;
-    height: 150%;
-    max-height: min(1500px, 100vh);
+    height: 120vw;
+    max-height: 1500px;
     background-position-x: 43%;
     background-position-y: 0;
     background-repeat: no-repeat;
@@ -228,6 +228,7 @@ header .cloud-right {
 @media screen and (max-width: 767px) {
     header::before {
         background-position-x: 53%;
+        height: 200vw;
     }
 
     header .team .name {
@@ -235,7 +236,7 @@ header .cloud-right {
     }
 
     header .team .slogan {
-        font-size: calc(100vw / 23);
+        font-size: max(18px, calc(100vw / 20));
     }
 
     header .spacer {
@@ -292,7 +293,7 @@ body[data-daytime=night] section#about .birds {
 section#join-us {
     padding: min(229px, 18vw) 0 min(250px, 16vw) 0;
     color: var(--color-night-text-light);
-    background: var(--color-mountain-front);
+    background: linear-gradient(180deg, var(--color-day-sky-bottom) 0%, var(--color-mountain-front) 10%);
 }
 
 section#join-us .mountains-peaks {
@@ -336,6 +337,13 @@ footer .trees-right {
     height: 331px;
     margin-top: -331px;
     background: url(../images/trees-right.svg) calc(50% + 600px) 0 no-repeat;
+}
+
+@media screen and (max-width: 425px) {
+    footer {
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+    }
 }
 
 /* Daytime switcher */
