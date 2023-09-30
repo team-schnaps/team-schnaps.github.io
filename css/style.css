@@ -235,7 +235,7 @@ header .cloud-right {
     }
 
     header .team .slogan {
-        font-size: calc(100vw / 23);
+        font-size: max(18px, calc(100vw / 20));
     }
 
     header .spacer {
