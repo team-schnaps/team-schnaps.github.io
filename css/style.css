@@ -338,6 +338,13 @@ footer .trees-right {
     background: url(../images/trees-right.svg) calc(50% + 600px) 0 no-repeat;
 }
 
+@media screen and (max-width: 425px) {
+    footer {
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+    }
+}
+
 /* Daytime switcher */
 #daytime-switcher {
     position: fixed;
